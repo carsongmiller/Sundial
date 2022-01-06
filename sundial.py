@@ -1,8 +1,4 @@
 import math
-lat_deg = 44.9366
-lat_rad = lat_deg * math.pi / 180
-sinLat = math.sin(math.radians(lat_deg))
-t = math.tan(math.radians(3.75))
 
 # goes from 6am to 6pm
 # 6am, 6pm have the same angle
@@ -19,6 +15,8 @@ decimalPlaces = 3
 # resolution = 24 -> 15 minute increments
 # resolution = 72 -> 5 minute increments
 
+lat_deg = 44.9366 # your degrees of latitude
+sinLat = math.sin(math.radians(lat_deg))
 
 Angles = []
 # (hrs away from 12:00 noon, angle on sundial)
