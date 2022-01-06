@@ -1,6 +1,6 @@
 AUTHOR = 'Carson Miller'
 SITENAME = 'Sundial Calculator'
-SITEURL = ''
+SITEURL = 'https://carsongmiller.github.io/Sundial/'
 
 PATH = 'content'
 
