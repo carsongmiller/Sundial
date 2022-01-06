@@ -24,8 +24,7 @@ Angles.append((0, 0))
 
 for i in range(resolution):
 	t = math.tan(math.radians((i+1) * tanIncrement))
-	mulTrig = t * sinLat
-	shadowAngle_deg = math.degrees(math.atan(mulTrig))
+	shadowAngle_deg = math.degrees(math.atan(t * sinLat))
 	newPair = (
 		round((6/resolution) * (i+1), decimalPlaces), 
 		round(shadowAngle_deg, decimalPlaces)
