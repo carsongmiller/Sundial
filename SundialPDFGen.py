@@ -90,6 +90,7 @@ def genLines(lattitude, resolution = 1, hoursToCalc = 7, decimalPlaces = 3):
 
 
 def hrTo12HrStr(hr, includeMin = True, includeSec = False):
+	hr = round(hr, 3)
 	am_pm = 'AM' if hr < 12 else 'PM'
 	min = (hr - int(hr)) * 60
 	sec = (min - int(min)) * 60
@@ -97,8 +98,8 @@ def hrTo12HrStr(hr, includeMin = True, includeSec = False):
 	hr_12 = int(hr) % 12
 	hr_12 = 12 if hr_12 == 0 else hr_12
 
-	min = str(int(min)).zfill(2)
-	sec = str(int(sec)).zfill(2)
+	min = str(int(round(min, 0))).zfill(2)
+	sec = str(int(round(sec, 0))).zfill(2)
 
 	if includeSec:
 		timeStr = f"{hr_12}:{min}:{sec} {am_pm}"
@@ -227,9 +228,22 @@ def genPDF(
 
 
 if __name__ == '__main__':
-	lat = 44.936 # lattitude
+	# lattitude
+	lat = 44.936
+	
+	# resolution values:
+	# 1 hr = 1
+	# 30 min = 0.5
+	# 20 min = 0.333333
+	# 15 min = 0.25
+	# 10 min = 0.166666
+	# 5 min = 0.083333
+	# 1 min = 0.0166666
+	res = 0.166666
 
-	lineList = genLines(lat, resolution = 0.5)
+	
+
+	lineList = genLines(lat, resolution = res)
 	filename = 'sundial.pdf'
 	pdf = genPDF(filename, lineList, lat)
 	pdf.save()
